@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ad Copy Generator</title>
+</head>
+<body>
+    <h1>Ad Copy Generator</h1>
+    <form method="post" action="generate_ad_copy.php">
+        <label for="url">Website URL:</label>
+        <input type="url" name="url" required>
+        <br>
+        <label>Ad Types:</label>
+        <br>
+        <input type="checkbox" name="google" value="1"> Google Ads
+        <br>
+        <input type="checkbox" name="facebook" value="1"> Facebook Ads
+        <br>
+        <input type="checkbox" name="linkedin" value="1"> LinkedIn Ads
+        <br>
+        <br>
+        <button type="submit">Generate Ad Copy</button>
+    </form>
+</body>
+</html>

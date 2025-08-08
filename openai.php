@@ -22,6 +22,22 @@
 
 use OpenAI\Api\GPT3;
 
+/**
+ * Generate base ad copy using OpenAI GPT-3 API
+ * 
+ * This function integrates with OpenAI's GPT-3 API to generate advertising copy
+ * based on website title and description. It uses the text-davinci-002 engine
+ * with optimized parameters for marketing content generation.
+ * 
+ * @param string $title The website title extracted from <title> tag
+ * @param string $description The meta description extracted from website
+ * @return string Generated ad copy text from OpenAI API
+ * @throws Exception If OpenAI API request fails or returns invalid response
+ * 
+ * @example
+ * $ad_copy = generate_ad_copy("Best Coffee Shop", "Premium coffee and pastries");
+ * // Returns: AI-generated marketing copy based on the input
+ */
 function generate_ad_copy($title, $description) {
     $openai_api_key = 'YOUR API KEY HERE';
     $gpt3 = new GPT3($openai_api_key);
@@ -94,5 +110,6 @@ function generate_linkedin_ad_copy($generated_text) {
     
     return $linkedin_ad_copy;
 }
+
 
 

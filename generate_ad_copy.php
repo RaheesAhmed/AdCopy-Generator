@@ -35,7 +35,11 @@ if (!$url) {
     die('Invalid URL');
 }
 
-// Extract relevant content from website
+/**
+ * Extract relevant content from the target website
+ * Uses Simple HTML DOM Parser to fetch and parse the website content
+ * Terminates execution if the website cannot be accessed or parsed
+ */
 $html = file_get_html($url);
 if (!$html) {
     die('Unable to retrieve website content');
@@ -66,5 +70,6 @@ if (isset($_POST['linkedin'])) {
 
 // Display ad copy results
 require_once 'display_ad_copy.php';
+
 
 

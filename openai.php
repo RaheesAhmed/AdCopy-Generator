@@ -1,5 +1,25 @@
 <?php
 
+/**
+ * OpenAI Integration and Ad Copy Generation Functions
+ * 
+ * This file contains all functions related to OpenAI GPT-3 API integration and
+ * platform-specific ad copy generation. It handles the core AI-powered content
+ * generation and creates tailored ad copy variations for Google Ads, Facebook Ads,
+ * and LinkedIn Ads.
+ * 
+ * Functions included:
+ * - generate_ad_copy(): Main OpenAI API integration for base ad copy generation
+ * - generate_google_ad_copy(): Creates Google Ads-specific copy with appropriate CTA
+ * - generate_facebook_ad_copy(): Creates Facebook Ads-specific copy with social CTAs
+ * - generate_linkedin_ad_copy(): Creates LinkedIn Ads-specific copy for professional audience
+ * 
+ * @author AdCopy-Generator
+ * @version 1.0.0
+ * @requires PHP 7.2+
+ * @requires OpenAI PHP SDK
+ */
+
 use OpenAI\Api\GPT3;
 
 function generate_ad_copy($title, $description) {
@@ -74,4 +94,5 @@ function generate_linkedin_ad_copy($generated_text) {
     
     return $linkedin_ad_copy;
 }
+
 

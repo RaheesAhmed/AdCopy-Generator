@@ -1,15 +1,45 @@
 <?php
 
+/**
+ * Ad Copy Generator - Main Processing Script
+ * 
+ * This script handles the main processing workflow for generating ad copy from website content.
+ * It processes form submissions from index.html, extracts website metadata, generates AI-powered
+ * ad copy using OpenAI's GPT-3 API, and creates platform-specific variations for Google Ads,
+ * Facebook Ads, and LinkedIn Ads.
+ * 
+ * Workflow:
+ * 1. Validates the submitted URL
+ * 2. Extracts title and meta description from the target website
+ * 3. Generates base ad copy using OpenAI API
+ * 4. Creates platform-specific ad copy variations based on user selection
+ * 5. Displays results using the display template
+ * 
+ * @author AdCopy-Generator
+ * @version 1.0.0
+ * @requires PHP 7.2+
+ * @requires simple_html_dom.php
+ * @requires openai.php
+ */
+
 require_once 'simple_html_dom.php';
 require_once 'openai.php';
 
-// Validate URL
+/**
+ * Validate the submitted URL from POST data
+ * Uses PHP's built-in filter_input with FILTER_VALIDATE_URL to ensure
+ * the provided URL is properly formatted and valid
+ */
 $url = filter_input(INPUT_POST, 'url', FILTER_VALIDATE_URL);
 if (!$url) {
     die('Invalid URL');
 }
 
-// Extract relevant content from website
+/**
+ * Extract relevant content from the target website
+ * Uses Simple HTML DOM Parser to fetch and parse the website content
+ * Terminates execution if the website cannot be accessed or parsed
+ */
 $html = file_get_html($url);
 if (!$html) {
     die('Unable to retrieve website content');
@@ -18,10 +48,17 @@ if (!$html) {
 $title = $html->find('title', 0)->plaintext;
 $description = $html->find('meta[name="description"]', 0)->attr['content'];
 
-// Generate ad copy using OpenAI API
+/**
+ * Generate base ad copy using OpenAI GPT-3 API
+ * Calls the generate_ad_copy() function from openai.php with extracted
+ * website metadata to create AI-generated advertising content
+ */
 $generated_text = generate_ad_copy($title, $description);
 
-// Generate ad copy for selected ad types
+/**
+ * Initialize platform-specific ad copy variables
+ * These variables will store the generated ad copy for each selected platform
+ */
 $google_ad_copy = '';
 $facebook_ad_copy = '';
 $linkedin_ad_copy = '';
@@ -40,3 +77,8 @@ if (isset($_POST['linkedin'])) {
 
 // Display ad copy results
 require_once 'display_ad_copy.php';
+
+
+
+
+

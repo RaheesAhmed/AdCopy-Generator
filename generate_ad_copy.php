@@ -25,7 +25,11 @@
 require_once 'simple_html_dom.php';
 require_once 'openai.php';
 
-// Validate URL
+/**
+ * Validate the submitted URL from POST data
+ * Uses PHP's built-in filter_input with FILTER_VALIDATE_URL to ensure
+ * the provided URL is properly formatted and valid
+ */
 $url = filter_input(INPUT_POST, 'url', FILTER_VALIDATE_URL);
 if (!$url) {
     die('Invalid URL');
@@ -62,4 +66,5 @@ if (isset($_POST['linkedin'])) {
 
 // Display ad copy results
 require_once 'display_ad_copy.php';
+
 

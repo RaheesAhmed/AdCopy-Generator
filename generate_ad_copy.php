@@ -1,5 +1,27 @@
 <?php
 
+/**
+ * Ad Copy Generator - Main Processing Script
+ * 
+ * This script handles the main processing workflow for generating ad copy from website content.
+ * It processes form submissions from index.html, extracts website metadata, generates AI-powered
+ * ad copy using OpenAI's GPT-3 API, and creates platform-specific variations for Google Ads,
+ * Facebook Ads, and LinkedIn Ads.
+ * 
+ * Workflow:
+ * 1. Validates the submitted URL
+ * 2. Extracts title and meta description from the target website
+ * 3. Generates base ad copy using OpenAI API
+ * 4. Creates platform-specific ad copy variations based on user selection
+ * 5. Displays results using the display template
+ * 
+ * @author AdCopy-Generator
+ * @version 1.0.0
+ * @requires PHP 7.2+
+ * @requires simple_html_dom.php
+ * @requires openai.php
+ */
+
 require_once 'simple_html_dom.php';
 require_once 'openai.php';
 
@@ -40,3 +62,4 @@ if (isset($_POST['linkedin'])) {
 
 // Display ad copy results
 require_once 'display_ad_copy.php';
+

@@ -55,7 +55,10 @@ $description = $html->find('meta[name="description"]', 0)->attr['content'];
  */
 $generated_text = generate_ad_copy($title, $description);
 
-// Generate ad copy for selected ad types
+/**
+ * Initialize platform-specific ad copy variables
+ * These variables will store the generated ad copy for each selected platform
+ */
 $google_ad_copy = '';
 $facebook_ad_copy = '';
 $linkedin_ad_copy = '';
@@ -74,6 +77,7 @@ if (isset($_POST['linkedin'])) {
 
 // Display ad copy results
 require_once 'display_ad_copy.php';
+
 
 
 

@@ -48,7 +48,11 @@ if (!$html) {
 $title = $html->find('title', 0)->plaintext;
 $description = $html->find('meta[name="description"]', 0)->attr['content'];
 
-// Generate ad copy using OpenAI API
+/**
+ * Generate base ad copy using OpenAI GPT-3 API
+ * Calls the generate_ad_copy() function from openai.php with extracted
+ * website metadata to create AI-generated advertising content
+ */
 $generated_text = generate_ad_copy($title, $description);
 
 // Generate ad copy for selected ad types
@@ -70,6 +74,7 @@ if (isset($_POST['linkedin'])) {
 
 // Display ad copy results
 require_once 'display_ad_copy.php';
+
 
 
 
